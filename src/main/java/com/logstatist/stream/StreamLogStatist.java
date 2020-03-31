@@ -2,7 +2,7 @@ package com.logstatist.stream;
 
 import com.logstatist.util.provider.LogFilesProvider;
 import com.logstatist.util.provider.SortedListByDateProvider;
-import com.logstatist.util.reader.LogFileReader;
+import com.logstatist.util.file.LogFileIO;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class StreamLogStatist {
 
         List<List<String>> logRowsList = logFilesNamesList
                 .parallelStream()
-                .map(path -> new LogFileReader().read(path))
+                .map(path -> new LogFileIO().read(path))
                 .filter(file -> !file.isEmpty())
                 .collect(Collectors.toList());
 

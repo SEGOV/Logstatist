@@ -15,6 +15,8 @@ import static com.logstatist.util.Constants.LOG_FILES_DIRECTORY_PATH;
 
 public class ExecutorServiceLogStatist {
     public static void main(String args[]) throws IOException {
+        new LogFileIO().getLogFilesFromResourcesAndWriteThemToSystem();
+
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
         List<Path> logFilesNamesList = new LogFilesProvider().provide(LOG_FILES_DIRECTORY_PATH);

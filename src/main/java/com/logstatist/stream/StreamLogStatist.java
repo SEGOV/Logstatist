@@ -6,6 +6,7 @@ import com.logstatist.util.reader.LogFileReader;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,7 @@ public class StreamLogStatist {
                 .filter(file -> !file.isEmpty())
                 .collect(Collectors.toList());
 
-        List<String> notSortedLogList = logRowsList.stream().flatMap(l -> l.stream()).collect(Collectors.toList());
+        List<String> notSortedLogList = logRowsList.stream().flatMap(Collection::stream).collect(Collectors.toList());
         ArrayList<String> sortedLogList = new SortedListByDateProvider().getSortedList(notSortedLogList);
         sortedLogList.forEach(System.out::println);
     }

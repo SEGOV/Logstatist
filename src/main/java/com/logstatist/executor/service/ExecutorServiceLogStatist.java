@@ -30,7 +30,8 @@ public class ExecutorServiceLogStatist {
         while (!executor.isTerminated()) {
         }
         ArrayList<String> sortedLogList = new SortedListByDateProvider().getSortedList(nonSortedLogList);
-        new LogFileIO().write(sortedLogList);
+//        ArrayList<String> groupedLogsList = new GroupListByHourProvider().getGroupedLogsList(sortedLogList);
+//        new LogFileIO().write(groupedLogsList);
         sortedLogList.forEach(System.out::println);
     }
 }

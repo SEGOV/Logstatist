@@ -28,6 +28,7 @@ public class StreamLogStatist {
 
         List<String> notSortedLogList = logRowsList.stream().flatMap(Collection::stream).collect(Collectors.toList());
         ArrayList<String> sortedLogList = new SortedListByDateProvider().getSortedList(notSortedLogList);
+        new LogFileIO().write(sortedLogList);
         sortedLogList.forEach(System.out::println);
     }
 }
